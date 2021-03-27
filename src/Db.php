@@ -12,7 +12,7 @@ class Db
      * Dane dostępowe do bazy.
      */
     private string $dbLogin = 'root';
-    private string $dbPassword = 'admin';
+    private string $dbPassword = '';
     private string $dbHost = 'localhost';
     private string $dbName = 'ibd';
 
@@ -40,7 +40,7 @@ class Db
                 $stmt->bindParam($k, $v);
         }
 
-        return $stmt->execute() ? $stmt->fetchAll() : null;
+        return $stmt->execute() ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : null;
     }
 
     /**
@@ -55,6 +55,6 @@ class Db
         $sql = "SELECT * FROM $table WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([':id' => $id]) ? $stmt->fetch() : null;
+        return $stmt->execute([':id' => $id]) ? $stmt->fetch(\PDO::FETCH_ASSOC) : null;
     }
 }

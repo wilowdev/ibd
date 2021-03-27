@@ -1,4 +1,4 @@
-				</div><!-- /.col-md-9 -->
+				</div><!-- /.col-md-10 -->
 				<?php include_once 'sidebar.php'; ?>
 			</div><!-- /.row -->
 		</div><!-- /.container -->
