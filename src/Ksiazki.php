@@ -23,7 +23,11 @@ class Ksiazki
 	 */
 	public function pobierzWszystkie(): ?array
     {
-		$sql = "SELECT k.* FROM ksiazki k  ";
+		$sql = "SELECT ks.*, kat.nazwa, aut.imie, aut.nazwisko
+                FROM ksiazki ks  
+                    JOIN autorzy aut on ks.id_autora = aut.id
+                    JOIN kategorie kat on ks.id_kategorii = kat.id
+                ";
 
 		return $this->db->pobierzWszystko($sql);
 	}
@@ -43,11 +47,12 @@ class Ksiazki
 	 * Pobiera najlepiej sprzedające się książki.
 	 * 
 	 */
-	public function pobierzBestsellery()
+	public function pobierzBestsellery(): ?array
 	{
 		$sql = "SELECT * FROM ksiazki ORDER BY RAND() LIMIT 5";
 
-		// uzupełnić funkcję
+
+		return $this->db->pobierzBestsellery($sql);
 	}
 
 }
