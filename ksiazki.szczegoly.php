@@ -13,15 +13,15 @@ include 'header.php';
 use Ibd\Ksiazki;
 
 $ksiazki = new Ksiazki();
-$dane = $ksiazki->pobierz($id);
+$szczegol = $ksiazki->pobierz($id);
 ?>
     <p>
         <a href="ksiazki.lista.php"><i class="fas fa-chevron-left"></i> Powrót</a>
     </p>
     <div class="row">
         <div class="col-4 p-1">
-            <?php if (!empty($dane['zdjecie'])) : ?>
-                <img src="zdjecia/<?= $dane['zdjecie'] ?>" alt="<?= $dane['tytul'] ?>" class="img-thumbnail" />
+            <?php if (!empty($szczegol['zdjecie'])) : ?>
+                <img src="zdjecia/<?= $szczegol['zdjecie'] ?>" alt="<?= $szczegol['tytul'] ?>" class="img-thumbnail" />
             <?php else : ?>
                 brak zdjęcia
             <?php endif; ?>
@@ -34,31 +34,31 @@ $dane = $ksiazki->pobierz($id);
                             <h3> Tytuł: </h3>
                         </td>
                         <td>
-                           <h3> <?= $dane['tytul'] ?> </h3>
+                           <h3> <?= $szczegol['tytul'] ?> </h3>
                         </td>
                     </tr>
                     <tr>
                         <td>Cena: </td>
                         <td>
-                            <?= $dane['cena'] ?> zł
+                            <?= $szczegol['cena'] ?> zł
                         </td>
                     </tr>
                     <tr>
                         <td>Liczba stron: </td>
                         <td>
-                            <?= $dane['liczba_stron'] ?>
+                            <?= $szczegol['liczba_stron'] ?>
                         </td>
                     </tr>
                     <tr>
                         <td>ISBN: </td>
                         <td>
-                            <?= $dane['isbn'] ?>
+                            <?= $szczegol['isbn'] ?>
                         </td>
                     </tr>
                     <tr>
                         <td>Opis: </td>
                         <td  class="text-justify">
-                            <?= $dane['opis'] ?>
+                            <?= $szczegol['opis'] ?>
                         </td>
                     </tr>
 
