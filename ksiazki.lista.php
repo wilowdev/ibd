@@ -42,5 +42,4 @@ $lista = $ksiazki->pobierzWszystkie();
 		<?php endforeach; ?>
 	</tbody>
 </table>
-
 <?php include 'footer.php'; ?>

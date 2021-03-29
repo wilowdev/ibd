@@ -51,7 +51,6 @@ class Ksiazki
 	{
 		$sql = "SELECT * FROM ksiazki ORDER BY RAND() LIMIT 5";
 
-
 		return $this->db->pobierzBestsellery($sql);
 	}
 
