@@ -69,22 +69,23 @@ class Ksiazki
         $sql = "SELECT ks.*, kat.nazwa, aut.imie, aut.nazwisko
                 FROM ksiazki ks  
                     JOIN autorzy aut on ks.id_autora = aut.id
-                    JOIN kategorie kat on ks.id_kategorii = kat.id 
+                    JOIN kategorie kat on ks.id_kategorii = kat.id
+                 
                 WHERE 1=1 ";
 
         // dodawanie warunków do zapytanie
         if (!empty($params['fraza'])) {
-            $sql .= "AND k.tytul LIKE :fraza ";
+            $sql .= "AND ks.tytul LIKE :fraza ";
             $parametry['fraza'] = "%$params[fraza]%";
         }
         if (!empty($params['id_kategorii'])) {
-            $sql .= "AND k.id_kategorii = :id_kategorii ";
+            $sql .= "AND ks.id_kategorii = :id_kategorii ";
             $parametry['id_kategorii'] = $params['id_kategorii'];
         }
 
         // dodawanie sortowania
         if (!empty($params['sortowanie'])) {
-            $kolumny = ['k.tytul', 'k.cena'];
+            $kolumny = ['ks.tytul', 'ks.cena'];
             $kierunki = ['ASC', 'DESC'];
             [$kolumna, $kierunek] = explode(' ', $params['sortowanie']);
 
