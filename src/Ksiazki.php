@@ -72,7 +72,6 @@ class Ksiazki
                     JOIN kategorie kat on ks.id_kategorii = kat.id
                  
                 WHERE 1=1 ";
-
         // dodawanie warunków do zapytanie
         if (!empty($params['fraza'])) {
             $sql .= "AND ks.tytul LIKE :fraza ";
