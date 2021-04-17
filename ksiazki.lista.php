@@ -19,7 +19,7 @@ $linki = $stronicowanie->pobierzLinki($zapytanie['sql'], 'ksiazki.lista.php');
 $select = $stronicowanie->dodajLimit($zapytanie['sql']);
 $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
 ?>
-
+s
     <h1>Książki</h1>
 
     <form method="get" action="" class="form-inline mb-4">
@@ -54,6 +54,14 @@ $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
             <option value="ks.cena DESC"
                 <?= ($_GET['sortowanie'] ?? '') == 'ks.cena DESC' ? 'selected' : '' ?>
             >cenie malejąco
+            </option>
+            <option value="aut.nazwisko ASC"
+                <?= ($_GET['sortowanie'] ?? '') == 'aut.nazwisko ASC' ? 'selected' : '' ?>
+            >nazwisko rosnąco
+            </option>
+            <option value="aut.nazwisko DESC"
+                <?= ($_GET['sortowanie'] ?? '') == 'aut.nazwisko DESC' ? 'selected' : '' ?>
+            >nazwisko malejąco
             </option>
         </select>
 

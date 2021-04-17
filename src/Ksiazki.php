@@ -78,7 +78,7 @@ class Ksiazki
 
         // dodawanie sortowania
         if (!empty($params['sortowanie'])) {
-            $kolumny = ['ks.tytul', 'ks.cena'];
+            $kolumny = ['ks.tytul', 'ks.cena', 'aut.nazwisko'];
             $kierunki = ['ASC', 'DESC'];
             [$kolumna, $kierunek] = explode(' ', $params['sortowanie']);
 
