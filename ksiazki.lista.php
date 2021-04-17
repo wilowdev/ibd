@@ -12,7 +12,7 @@ $listaKategorii = $kategorie->pobierzWszystkie();
 // pobieranie książek
 $ksiazki = new Ksiazki();
 $zapytanie = $ksiazki->pobierzZapytanie($_GET);
-
+//echo $zapytanie['sql'];
 // dodawanie warunków stronicowania i generowanie linków do stron
 $stronicowanie = new Stronicowanie($_GET, $zapytanie['parametry']);
 $linki = $stronicowanie->pobierzLinki($zapytanie['sql'], 'ksiazki.lista.php');
@@ -39,20 +39,20 @@ $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
 
         <select name="sortowanie" id="sortowanie" class="form-control form-control-sm mr-2">
             <option value="">sortowanie</option>
-            <option value="k.tytul ASC"
-                <?= ($_GET['sortowanie'] ?? '') == 'k.tytul ASC' ? 'selected' : '' ?>
+            <option value="ks.tytul ASC"
+                <?= ($_GET['sortowanie'] ?? '') == 'ks.tytul ASC' ? 'selected' : '' ?>
             >tytule rosnąco
             </option>
-            <option value="k.tytul DESC"
-                <?= ($_GET['sortowanie'] ?? '') == 'k.tytul DESC' ? 'selected' : '' ?>
+            <option value="ks.tytul DESC"
+                <?= ($_GET['sortowanie'] ?? '') == 'ks.tytul DESC' ? 'selected' : '' ?>
             >tytule malejąco
             </option>
-            <option value="k.cena ASC"
-                <?= ($_GET['sortowanie'] ?? '') == 'k.cena ASC' ? 'selected' : '' ?>
+            <option value="ks.cena ASC"
+                <?= ($_GET['sortowanie'] ?? '') == 'ks.cena ASC' ? 'selected' : '' ?>
             >cenie rosnąco
             </option>
-            <option value="k.cena DESC"
-                <?= ($_GET['sortowanie'] ?? '') == 'k.cena DESC' ? 'selected' : '' ?>
+            <option value="ks.cena DESC"
+                <?= ($_GET['sortowanie'] ?? '') == 'ks.cena DESC' ? 'selected' : '' ?>
             >cenie malejąco
             </option>
         </select>
