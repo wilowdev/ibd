@@ -21,16 +21,6 @@ class Ksiazki
      *
      * @return array
      */
-    public function pobierzWszystkie(): ?array
-    {
-		$sql = "SELECT ks.*, kat.nazwa, aut.imie, aut.nazwisko
-                FROM ksiazki ks  
-                    JOIN autorzy aut on ks.id_autora = aut.id
-                    JOIN kategorie kat on ks.id_kategorii = kat.id
-                ";
-
-		return $this->db->pobierzWszystko($sql);
-	}
 
     /**
      * Pobiera dane książki o podanym id.
@@ -74,9 +64,13 @@ class Ksiazki
                 WHERE 1=1 ";
         // dodawanie warunków do zapytanie
         if (!empty($params['fraza'])) {
-            $sql .= "AND ks.tytul LIKE :fraza ";
+            $sql .= "AND (aut.imie LIKE :fraza OR
+                          ks.tytul LIKE :fraza OR
+                          aut.nazwisko LIKE :fraza OR
+                          ks.opis LIKE :fraza)  ";
             $parametry['fraza'] = "%$params[fraza]%";
         }
+
         if (!empty($params['id_kategorii'])) {
             $sql .= "AND ks.id_kategorii = :id_kategorii ";
             $parametry['id_kategorii'] = $params['id_kategorii'];
