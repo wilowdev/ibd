@@ -73,8 +73,26 @@ class Stronicowanie
         $rekordow = $this->db->policzRekordy($select, $this->parametryZapytania);
         $liczbaStron = ceil($rekordow / $this->naStronie);
         $parametry = $this->_przetworzParametry();
+        $linki = "<nav><ul class='pagination justify-content-center'>";
+        //dodanie poprzednia i pierwsza z warunkami
+        if (0 == $this->strona) {
+            $linki .= "<li class='page-item disabled'><a class='page-link' href=''><<</a></li>";
+            $linki .= "<li class='page-item disabled'><a class='page-link' href=''><</a></li>";
+        } else {
+            $linki .= sprintf(
+                "<li class='page-item'><a href='%s?%s&strona=%d' title='Początek' class='page-link'><<</a></li>",
+                $plik,
+                $parametry,
+                0
+            );
+            $linki .= sprintf(
+                "<li class='page-item'><a href='%s?%s&strona=%d' title='Poprzednia' class='page-link'><</a></li>",
+                $plik,
+                $parametry,
+                ($this->strona)-1
+            );
+        }
 
-        $linki = "<nav><ul class='pagination'>";
         for ($i = 0; $i < $liczbaStron; $i++) {
             if ($i == $this->strona) {
                 $linki .= sprintf("<li class='page-item active'><a class='page-link'>%d</a></li>", $i + 1);
@@ -87,6 +105,23 @@ class Stronicowanie
                     $i + 1
                 );
             }
+        }
+        if ($liczbaStron-1 == $this->strona) {
+            $linki .= "<li class='page-item disabled'><a class='page-link' href=''>></a></li>";
+            $linki .= "<li class='page-item disabled'><a class='page-link' href=''>>></a></li>";
+        } else {
+            $linki .= sprintf(
+                "<li class='page-item'><a href='%s?%s&strona=%d' class='page-link' title='Następna'>></a></li>",
+                $plik,
+                $parametry,
+                ($this->strona)+1
+            );
+            $linki .= sprintf(
+                "<li class='page-item'><a href='%s?%s&strona=%d' class='page-link' title='Koniec'>>></a></li>",
+                $plik,
+                $parametry,
+                $liczbaStron-1
+            );
         }
         $linki .= "</ul></nav>";
 

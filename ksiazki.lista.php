@@ -19,7 +19,6 @@ $linki = $stronicowanie->pobierzLinki($zapytanie['sql'], 'ksiazki.lista.php');
 $select = $stronicowanie->dodajLimit($zapytanie['sql']);
 $lista = $ksiazki->pobierzStrone($select, $zapytanie['parametry']);
 ?>
-s
     <h1>Książki</h1>
 
     <form method="get" action="" class="form-inline mb-4">
@@ -100,7 +99,8 @@ s
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
-</table><nav class="text-center">
+</table>
+    <nav class="text-center">
         <?= $linki ?>
     </nav>
 <?php include 'footer.php'; ?>
