@@ -124,6 +124,23 @@ class Stronicowanie
             );
         }
         $linki .= "</ul></nav>";
+        if (0 == $rekordow) {
+            $pierwszyRekordStrony = $rekordow;
+            $ostatniRekordStrony = $rekordow;
+        } elseif ($this->strona == $liczbaStron-1){
+            $pierwszyRekordStrony = $rekordow + 1 - $rekordow%$this->naStronie;
+            $ostatniRekordStrony = $rekordow;
+        } else{
+            $ostatniRekordStrony = ($this->strona +1) * $this->naStronie;
+            $pierwszyRekordStrony = $ostatniRekordStrony - ($this->naStronie - 1);
+        }
+
+        $linki .= sprintf(
+            "</br><p>Wyświetlono $pierwszyRekordStrony - $ostatniRekordStrony z $rekordow rekordów.</p>",
+            $plik,
+            $parametry,
+            $liczbaStron-1
+        );
 
         return $linki;
     }
