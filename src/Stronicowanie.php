@@ -127,7 +127,10 @@ class Stronicowanie
         if (0 == $rekordow) {
             $pierwszyRekordStrony = $rekordow;
             $ostatniRekordStrony = $rekordow;
-        } elseif ($this->strona == $liczbaStron-1){
+        }elseif ($this->naStronie == $rekordow){
+            $pierwszyRekordStrony = 1;
+            $ostatniRekordStrony = $rekordow;
+        }elseif ($this->strona == $liczbaStron-1){
             $pierwszyRekordStrony = $rekordow + 1 - $rekordow%$this->naStronie;
             $ostatniRekordStrony = $rekordow;
         } else{
