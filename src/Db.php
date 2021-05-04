@@ -29,9 +29,9 @@ class Db
      *
      * @param            $sql    string Zapytanie SQL
      * @param array|null $params Tablica z parametrami zapytania
-     * @return array Tablica z danymi, false jeśl nie udało się wysłać zapytania
+     * @return array Tablica z danymi
      */
-    public function pobierzWszystko(string $sql, ?array $params = null): ?array
+    public function pobierzWszystko(string $sql, ?array $params = null): array
     {
         $stmt = $this->pdo->prepare($sql);
 
@@ -40,7 +40,11 @@ class Db
                 $stmt->bindParam($k, $v);
         }
 
-        return $stmt->execute() ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : null;
+        if(!$stmt->execute()){
+            throw new \RuntimeException("Failed to execute [$sql] {$stmt->errorInfo()[2]}");
+        }
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     /**
