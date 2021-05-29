@@ -10,6 +10,7 @@ $v = new Validator($_POST);
 
 if (isset($_POST['zapisz'])) {
     $v->rule('required', ['imie', 'nazwisko', 'adres', 'email', 'login', 'haslo']);
+    $v->rule('email', 'email');
 
     if ($v->validate()) {
         // brak błędów, można dodać użytkownika
