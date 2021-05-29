@@ -52,4 +52,4 @@ $koszykHtml = "<span class='badge badge-dark' id='wKoszyku'>$liczbaKsiazekWKoszy
 	
     <div class="container">
         <div class="row">
-            <div class="col-md-10"> 
+            <div class="col-md-9">
