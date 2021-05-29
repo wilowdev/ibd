@@ -1,6 +1,4 @@
-<?php include 'header.php';
-
-?>
+<?php include 'header.php'; ?>
 
 
 <h1>Witamy w księgarni internetowej (login: wierzbop, indeks: 16757)</h1>

@@ -29,9 +29,9 @@ class Db
      *
      * @param            $sql    string Zapytanie SQL
      * @param array|null $params Tablica z parametrami zapytania
-     * @return array Tablica z danymi, false jeśl nie udało się wysłać zapytania
+     * @return array Tablica z danymi
      */
-    public function pobierzWszystko(string $sql, ?array $params = null): ?array
+    public function pobierzWszystko(string $sql, ?array $params = null): array
     {
         $stmt = $this->pdo->prepare($sql);
 
@@ -145,6 +145,21 @@ class Db
         $stmt = $this->pdo->prepare($sql);
 
         $params['id'] = $id;
+        return $stmt->execute($params);
+    }
+
+
+    /**
+     * Wykonuje podane zapytanie SQL z parametrami.
+     *
+     * @param string $sql
+     * @param array  $params
+     * @return bool
+     */
+    public function wykonaj(string $sql, array $params = []): bool
+    {
+        $stmt = $this->pdo->prepare($sql);
+
         return $stmt->execute($params);
     }
 }

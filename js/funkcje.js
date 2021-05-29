@@ -29,7 +29,6 @@ const usunZKoszyka = async (e) => {
         if (txt === 'ok') {
             const wKoszyku = document.querySelector('#wKoszyku')
             wKoszyku.innerHTML = parseInt(wKoszyku.innerHTML) - 1
-            // a.outerHTML = '<i class="fas fa-check text-success"></i>'
         } else {
             alert('Wystąpił błąd: ' + txt);
         }
