@@ -10,8 +10,9 @@ use Ibd\Menu;
 use Ibd\Koszyk;
 
 $koszyk = new Koszyk();
-$listaKoszyk = $koszyk->pobierzWszystkie();
-$liczbaKsiazekWKoszyku = count($listaKoszyk);
+//$listaKoszyk = $koszyk->ileSztukWKoszyku(session_id());
+//$liczbaKsiazekWKoszyku = count($listaKoszyk);
+$liczbaKsiazekWKoszyku = $koszyk->ileSztukWKoszyku(session_id());
 $koszykHtml = "<span class='badge badge-dark' id='wKoszyku'>$liczbaKsiazekWKoszyku</span>";
 ?>
 

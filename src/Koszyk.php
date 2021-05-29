@@ -31,6 +31,23 @@ class Koszyk
 		return $this->db->pobierzWszystko($sql);
 	}
 
+    public function pobierzJedna(int $idKsiazki, string $idSesji): array
+    {
+        $sql = "
+			SELECT * FROM koszyk WHERE id_sesji = '$idSesji' AND id_ksiazki = '$idKsiazki'";
+
+        return $this->db->pobierzWszystko($sql);
+    }
+
+    public function ileSztukWKoszyku(string $idSesji): int
+    {
+        $sql = "
+			SELECT SUM(liczba_sztuk) FROM koszyk WHERE id_sesji = '$idSesji'";
+
+        $liczba = $this->db->pobierzWszystko($sql);
+        return intval($liczba[0]['SUM(liczba_sztuk)'], 10);
+    }
+
 	/**
 	 * Dodaje książkę do koszyka.
 	 *
