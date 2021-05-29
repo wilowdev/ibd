@@ -4,11 +4,9 @@ error_reporting(E_ALL|E_STRICT);
 session_start();
 require_once 'vendor/autoload.php';
 
-use Ibd\Koszyk;
+$koszyk = new Ibd\Koszyk();
 
-$koszyk = new Koszyk();
-
-if(isset($_POST['id_koszyka'])) {
-    $koszyk->zmienLiczbeSztuk([$_POST['id_koszyka'] => 0]);
-    echo 'ok';
+if(isset($_GET['id_koszyka'])) {
+    $koszyk->zmienLiczbeSztuk([$_GET['id_koszyka'] => 0]);
+    include 'koszyk.lista.php';
 }

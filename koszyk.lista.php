@@ -58,7 +58,7 @@ foreach ($listaKsiazek as $ks) {
 						</td>
 						<td><?= $ks['cena'] * $ks['liczba_sztuk'] ?></td>
 						<td style="white-space: nowrap">
-							<a href="koszyk.usun.php?id_koszyka=<?= $ks['id_koszyka'] ?>"" title="usuń z koszyka">
+							<a href="koszyk.usun.php?id_koszyka=<?= $ks['id_koszyka'] ?>" title="usuń z koszyka" class="aUsunZKoszyka">
                                 <i class="fas fa-trash"></i>
 							</a>
 							<a href="ksiazki.szczegoly.php?id=<?=$ks['id']?>" title="szczegóły">
