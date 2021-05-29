@@ -63,4 +63,19 @@ class Uzytkownicy
         return false;
     }
 
+    //funkcje do sprawdzania obecnosci w bazie
+    public function sprawdzLogin(string $login)
+    {
+        $sql = "SELECT * FROM uzytkownicy WHERE login = :login";
+        $params = ['login' => $login];
+
+        return $this->db->pobierzWszystko($sql, $params);
+    }
+    public function sprawdzEmail(string $email): ?array
+    {
+        $sql = "SELECT * FROM uzytkownicy WHERE email = :email";
+        $params = ['email' => $email];
+
+        return $this->db->pobierzWszystko($sql, $params);
+    }
 }

@@ -8,9 +8,19 @@ use Valitron\Validator;
 $uzytkownicy = new Uzytkownicy();
 $v = new Validator($_POST);
 
+//dodanie wlasnych regul sprawdzania
+$v->addInstanceRule('emailExists', function ($name, $email) use ($uzytkownicy){
+    return empty($uzytkownicy->sprawdzEmail($email));
+}, 'already exists');
+$v->addInstanceRule('loginExists', function ($name, $login) use ($uzytkownicy){
+    return empty($uzytkownicy->sprawdzLogin($login));
+}, 'already exists');
+
 if (isset($_POST['zapisz'])) {
     $v->rule('required', ['imie', 'nazwisko', 'adres', 'email', 'login', 'haslo']);
     $v->rule('email', 'email');
+    $v->rule('loginExists', ['login']);
+    $v->rule('emailExists', ['email']);
 
     if ($v->validate()) {
         // brak błędów, można dodać użytkownika
