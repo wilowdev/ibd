@@ -70,8 +70,8 @@ foreach ($listaKsiazek as $ks) {
 			</tbody>
             <tfoot>
                 <tr>
-                    <td colspan="5">&nbsp;</td>
-                    <td colspan="3">
+                    <td colspan="3">&nbsp;</td>
+                    <td colspan="5">
                         <input type="submit" class="btn btn-secondary btn-sm" name="zmien" value="Zmień liczbę sztuk" />
                         <?php if (!empty($_SESSION['id_uzytkownika'])): ?>
                             <a href="zamowienie.php" class="btn btn-primary btn-sm">Złóż zamówienie</a>

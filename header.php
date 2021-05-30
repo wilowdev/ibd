@@ -11,10 +11,20 @@ require_once 'vendor/autoload.php';
 
 use Ibd\Menu;
 use Ibd\Koszyk;
+use Ibd\Zamowienia;
 
 $koszyk = new Koszyk();
 $liczbaKsiazekWKoszyku = $koszyk->ileSztukWKoszyku(session_id());
 $koszykHtml = "<span class='badge badge-dark' id='wKoszyku'>$liczbaKsiazekWKoszyku</span>";
+
+$zamowienia = new Zamowienia();
+if($_SESSION == null){
+    $zamowienieHtml = "<span class='badge badge-dark' id='lZamowien'>0</span>";
+} else{
+    $liczbaZamowien = $zamowienia->liczbaZamowien($_SESSION['id_uzytkownika']);
+    $zamowienieHtml = "<span class='badge badge-dark' id='lZamowien'>$liczbaZamowien</span>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +55,7 @@ $koszykHtml = "<span class='badge badge-dark' id='wKoszyku'>$liczbaKsiazekWKoszy
 					<?= Menu::generujOpcje('index.php', 'Strona główna') ?>
                     <?= Menu::generujOpcje('ksiazki.lista.php', 'Książki') ?>
                     <?= Menu::generujOpcje('koszyk.lista.php', "Koszyk $koszykHtml") ?>
+                    <?= Menu::generujOpcje('zamowienia.lista.php', "Zamówienia $zamowienieHtml") ?>
                 </ul>
             </div>
         </nav>
