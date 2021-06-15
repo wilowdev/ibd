@@ -41,6 +41,12 @@ document.body.onload = () => {
         ksiazki.addEventListener('click', dodajDoKoszyka)
     }
 
+    // autorzy
+    document.querySelectorAll('.aUsunAutora').forEach(a => a.addEventListener('click', usunRekord))
+
+    // użytkownicy
+    document.querySelectorAll('.aUsunUzytkownika').forEach(a => a.addEventListener('click', usunRekord))
+
     const koszyk = document.querySelector('#koszyk')
     if (koszyk) {
         koszyk.addEventListener('click', usunZKoszyka)
