@@ -47,16 +47,15 @@ document.body.onload = () => {
     // użytkownicy
     document.querySelectorAll('.aUsunUzytkownika').forEach(a => a.addEventListener('click', usunRekord))
 
+    //kategorie
+    document.querySelectorAll('.aUsunKategorie').forEach(a => a.addEventListener('click', usunRekord))
+
     const koszyk = document.querySelector('#koszyk')
     if (koszyk) {
         koszyk.addEventListener('click', usunZKoszyka)
     }
 
-    // autorzy
-    document.querySelectorAll('.aUsunAutora').forEach(a => a.addEventListener('click', usunRekord))
 
-    // użytkownicy
-    document.querySelectorAll('.aUsunUzytkownika').forEach(a => a.addEventListener('click', usunRekord))
 }
 
 /**
