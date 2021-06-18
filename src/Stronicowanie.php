@@ -61,6 +61,24 @@ class Stronicowanie
         return sprintf('%s LIMIT %d, %d', $select, $this->strona * $this->naStronie, $this->naStronie);
     }
 
+    public function pobierzPozycje(string $select): string{
+        $ile_rekordow = $this->db->policzRekordy($select, $this->parametryZapytania);
+
+        $pierwszy_rekord = $this->strona * $this->naStronie + 1;
+        if ($pierwszy_rekord > $ile_rekordow){
+            $pierwszy_rekord = 0;
+        }
+
+        $ostatni_rekord = $this->strona * $this->naStronie + $this->naStronie;
+        if ($ostatni_rekord > $ile_rekordow){
+            $ostatni_rekord = $ile_rekordow;
+        }
+
+        $stats = sprintf("Wyświetlono %d - %d z %d rekordów",
+            $pierwszy_rekord, $ostatni_rekord, $ile_rekordow);
+        return $stats;
+    }
+
     /**
      * Generuje linki do wszystkich podstron.
      *
